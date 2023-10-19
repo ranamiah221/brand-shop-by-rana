@@ -1,13 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
-import'./Navbar.css';
+import logo from '../../assets/crop_logo_1420804.png';
+import './Navbar.css';
 
 const Navbar = () => {
-      const links= <nav className="text-base font font-medium">
-                 <NavLink className= 'mr-5 hover:text-lg ' to='/'>Home</NavLink>
-                 <NavLink className= 'mr-5 hover:text-lg ' to='/addProduct'>Add Product</NavLink>
-                 <NavLink className= 'mr-5 hover:text-lg ' to='/myCart'>My Cart</NavLink>
-                 <NavLink className= 'mr-5 hover:text-lg ' to='/register'>Register</NavLink>
-                 <NavLink className= 'mr-5 hover:text-lg ' to='/login'>Login</NavLink>
+      const links= <nav className="text-base font font-medium ">
+                 <NavLink className= 'mr-5 hover:text-lg ' to={'/'}>Home</NavLink>
+                 <NavLink className= 'mr-5 hover:text-lg ' to={'/addProduct'}>Add Product</NavLink>
+                 <NavLink className= 'mr-5 hover:text-lg ' to={'/myCart'}>My Cart</NavLink>
+                 <NavLink className= 'mr-5 hover:text-lg ' to={'/register'}>Register</NavLink>
+                 <NavLink className= 'mr-5 hover:text-lg ' to={'/login'}>Login</NavLink>
 
       </nav>       
 
@@ -22,10 +23,10 @@ const Navbar = () => {
          {links} 
       </ul>
     </div>
-    <div>
-       
+    <div className="flex gap-4 items-center">
+       <img className="w-1/5" src={logo} alt="" />
         <div>
-             <h1>BRAND NEW WEBSITE</h1>
+             <h1 className="text-3xl font-semibold text-blue-400">Free Explore</h1>
         </div>
     </div>
   </div>

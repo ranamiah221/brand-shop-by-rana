@@ -1,9 +1,9 @@
 
-
+import banner from '../../assets/crop_banner.jpg'
 const Banner = () => {
     return (
         <div>
-            <img src="" alt="" />
+            <img className='w-full shadow-lg my-5' src={banner} alt="" />
         </div>
     );
 };

@@ -2,81 +2,94 @@
 
 const AddProduct = () => {
 
-  
+    const handleAddProduct = event=>{
+      event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const image = form.image.value;
+        const brand = form.brandName.value;
+        const type = form.type.value;
+        const price = form.price.value;
+        const shortDescription = form.shortDescription.value;
+        const newProduct = {name, image, brand, type, price, shortDescription}
+        console.log(newProduct);
+
+        fetch('http://localhost:5000/product',{
+          method : "POST",
+          headers : {
+            "content-type" : "application/json"
+          },
+          body : JSON.stringify(newProduct),
+        })
+        .then(res=> res.json())
+        .then(data =>{
+          console.log(data);
+        })
+    }
+
     return (
-        <div>
-           <h2 className="text-3xl font-medium text-center">Add Product</h2>
-     <form>
-         {/* name and quantity row.. */}
+        <div className="bg-purple-200 rounded-md p-10 my-6">
+           <h2 className="text-3xl font-medium text-center mb-4">Add Product</h2>
+     <form onSubmit={handleAddProduct}>
+         {/* name and image */}
          <div className="flex mb-6">
       <div className="form-control w-1/2">
           <label className="label">
-             <span className="label-text">Coffee Name</span>
+             <span className="label-text">Name</span>
           </label>
              <label className="input-group">
-               <input type="text" name="name" placeholder="Coffee name" className="input input-bordered w-full" />
+               <input type="text" name="name" placeholder="name" className="input input-bordered w-full" />
          </label>
       </div>
       <div className="form-control w-1/2 ml-5">
           <label className="label">
-             <span className="label-text">Available Quantity</span>
+             <span className="label-text">Image</span>
           </label>
              <label className="input-group">
-               <input type="text" name="quantity" placeholder="Available Quantity" className="input input-bordered w-full" />
+               <input type="text" name="image" placeholder="image" className="input input-bordered w-full" />
          </label>
       </div>                 
          </div>
-         {/*supplier and  taste row */}
+         {/*brand name and type */}
          <div className="flex mb-6">
       <div className="form-control w-1/2">
           <label className="label">
-             <span className="label-text">Supplier</span>
+             <span className="label-text">Brand Name</span>
           </label>
              <label className="input-group">
-               <input type="text" name="supplier" placeholder="Supplier" className="input input-bordered w-full" />
+               <input type="text" name="brandName" placeholder="brand name" className="input input-bordered w-full" />
          </label>
       </div>
       <div className="form-control w-1/2 ml-5">
           <label className="label">
-             <span className="label-text">Taste</span>
+             <span className="label-text">Type</span>
           </label>
              <label className="input-group">
-               <input type="text" name="taste" placeholder="Taste" className="input input-bordered w-full " />
+               <input type="text" name="type" placeholder="type" className="input input-bordered w-full " />
          </label>
       </div>                 
          </div>
-         {/* category and details row */}
+         {/* price and shortDescription */}
         <div className="flex mb-6">
       <div className="form-control w-1/2">
           <label className="label">
-             <span className="label-text">Category</span>
+             <span className="label-text">Price</span>
           </label>
              <label className="input-group">
-               <input type="text" name="category" placeholder="Category" className="input input-bordered w-full" />
+               <input type="text" name="price" placeholder="price" className="input input-bordered w-full" />
          </label>
       </div>
       <div className="form-control w-1/2 ml-5">
           <label className="label">
-             <span className="label-text">Details</span>
+             <span className="label-text">Short description</span>
           </label>
              <label className="input-group">
-               <input type="text" name="details" placeholder="Details" className="input input-bordered w-full" />
+               <input type="text" name="shortDescription" placeholder="short description" className="input input-bordered w-full" />
          </label>
       </div>                 
        </div>
-       {/* photo url */}
-      <div className="flex mb-6">
-      <div className="form-control w-full">
-          <label className="label">
-             <span className="label-text">Photo Url</span>
-          </label>
-             <label className="input-group">
-               <input type="text" name="photo" placeholder="Photo Url" className="input input-bordered w-full" />
-         </label>
-      </div>
-                    
-      </div>
-         <input type="submit" value="Add a coffee" className="btn bg-gray-500 w-full" />
+      
+         <input type="submit" value="Add Product" className="btn bg-gray-300 w-full" />
     </form>
         </div>  
     );
