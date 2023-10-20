@@ -14,6 +14,7 @@ import MyCart from './Pages/MyCart/MyCart';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import AuthProvider from './providers/AuthProvider';
+import Product from './Pages/Product/Product';
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
       {
         path:'/addProduct',
         element:<AddProduct></AddProduct>
+      },
+      {
+        path:'/product/:brandName',
+        element: <Product></Product>,
+        loader: ()=> fetch()
       },
       {
         path:'/myCart',
