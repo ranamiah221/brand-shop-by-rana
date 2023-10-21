@@ -1,6 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/crop_logo_1420804.png';
 import './Navbar.css';
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
       const links= <nav className="text-base font font-medium ">
@@ -11,7 +14,18 @@ const Navbar = () => {
                  <NavLink className= 'mr-5 hover:text-lg ' to={'/login'}>Login</NavLink>
 
       </nav>       
-
+    const { user, logOut }= useContext(AuthContext);
+    const handleLogOut = ()=>{
+        logOut()
+        .then( Swal.fire({
+          title: 'Successful!',
+          text: 'Logout Successful',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        }))
+        .catch()
+          
+    }
     return (
         <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -36,7 +50,11 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
+    {
+      user ? <button onClick={handleLogOut}>Log Out</button> :
       <Link to={'/login'}>Login </Link>
+    }
+     
   </div>
 </div>
           

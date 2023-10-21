@@ -1,5 +1,5 @@
 
-import banner from '../../assets/crop_banner.jpg'
+import banner from '../../assets/top-view-workspace-with-laptop-notebook.jpg'
 const Banner = () => {
     return (
         <div>
