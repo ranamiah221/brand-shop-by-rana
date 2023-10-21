@@ -6,13 +6,17 @@ const Service = () => {
     return (
         <div>
             <h1 className="text-4xl font-medium text-center text-gray-600 my-3">Our Featured</h1>
-            <p className="text-base font-medium text-center text-gray-500">Cutting-edge tech enhances user experience,
+            <p className="text-base font-medium text-center text-gray-500 mb-5">Cutting-edge tech enhances user experience,
                  personalized recommendations, secure transactions,
                  <br />
                   real-time inventory updates, AI-driven customer support, 
                   seamless integration with apps, and data-driven insights for 
                   businesses, <br /> amplifying e-commerce's efficiency and competitiveness.
             </p>
+            <hr />
+            <h2 className='text-4xl font-medium text-center text-gray-600 mt-5 mb-5'>Our Paying System </h2>
+            <p className='text-base font-medium text-center text-gray-500'>
+              Instant access, convenient transactions, account management, bill payments, alerts, and secure authentication, enabling efficient financial management on-the-go with ease.</p>
            <div className='grid lg:grid-cols-3 grid-cols-1 mt-10 gap-8'>
            <div className="card w-full bg-base-100 shadow-xl">
   <figure><img className='w-full' src={bkash} alt="Shoes" /></figure>

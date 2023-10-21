@@ -10,7 +10,7 @@ const Product = () => {
     return (
         <div>
             <ProductBanner></ProductBanner>
-           <div className="grid lg:grid-cols-2 grid-cols-1 gap-10">
+           <div className="grid lg:grid-cols-2 grid-cols-1 gap-10 mt-12">
            {
                 products.map(product => <ProductCard key={product._id} product={product}></ProductCard>)
             }
