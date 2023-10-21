@@ -3,28 +3,44 @@ import Swal from "sweetalert2";
 
 
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product , products, setProducts}) => {
     const brand_name = useParams();
-    console.log(brand_name);
+  
     const { _id, name, image, brandName, type, price }= product;
     const handleDelete =(_id)=>{
      console.log(_id);
-     fetch(`http://localhost:5000/product/${_id}`,{
+     Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+       fetch(`http://localhost:5000/product/${_id}`,{
       method : 'DELETE',
      })
      .then(res => res.json())
      .then(data =>{
       console.log(data);
       if(data.deletedCount > 0){
-        Swal.fire({
-          title: 'Successful!',
-          text: 'deleted Successful',
-          icon: 'success',
-          confirmButtonText: 'Cool'
-        })
+           Swal.fire(
+          'Deleted!',
+           'Your product has been deleted.',
+           'success'
+         )
+         const remaining  = products.filter (pro => pro._id !== _id)
+         setProducts(remaining);
       }
-     })
-    }
+      
+     }) 
+        
+      }
+    })
+    
+   }
     
     return (
         <div className="card card-side bg-base-200 shadow-xl">
@@ -40,8 +56,8 @@ const ProductCard = ({ product }) => {
                            <p>Price : {price}</p>
                        </div>
                        <div className="btn-group gap-5 btn-group-vertical">
-                            <button className="btn bg-white">View</button>
-                            <button className="btn bg-white">Update</button>
+                            <Link to={`/view/${_id}`}><button className="btn bg-white">Details</button></Link>
+                            <Link to={`/product/${_id}`}><button className="btn bg-white">Update</button></Link>
                             <button onClick={()=>handleDelete(_id)} className="btn bg-white">X</button>
                         </div>
                     </div>
