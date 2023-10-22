@@ -6,7 +6,7 @@ const ViewProduct = () => {
     const product = useLoaderData(); 
     const handleAddCart = () =>{
 
-   fetch('http://localhost:5000/myCart',{
+   fetch('https://brand-shop-server-gik7rup7e-ranas-projects-c2243bd3.vercel.app/myCart',{
      method: 'POST',
      headers:{
         'content-type': 'application/json',

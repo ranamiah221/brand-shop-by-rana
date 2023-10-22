@@ -28,7 +28,7 @@ const Register = () => {
         .then(result=>{
             console.log(result.user)
             const user = { email }
-            fetch('http://localhost:5000/user',{
+            fetch('https://brand-shop-server-gik7rup7e-ranas-projects-c2243bd3.vercel.app/user',{
               method:'POST',
               headers:{
                 'context-type': 'application/json'

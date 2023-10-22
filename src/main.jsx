@@ -39,22 +39,22 @@ const router = createBrowserRouter([
       {
         path:'/product',
         element: <Product></Product>,
-         loader:()=> fetch('http://localhost:5000/product') 
+         loader:()=> fetch('https://brand-shop-server-gik7rup7e-ranas-projects-c2243bd3.vercel.app/product') 
       },
       {
         path:'/product/:id',
         element: <UpdatedProduct></UpdatedProduct>,
-         loader:({params})=> fetch(`http://localhost:5000/product/${params.id}`)   
+         loader:({params})=> fetch(`https://brand-shop-server-gik7rup7e-ranas-projects-c2243bd3.vercel.app/${params.id}`)   
       },
       {
         path:'/view/:id',
         element: <PrivateRoute><ViewProduct></ViewProduct></PrivateRoute>,
-         loader:({params})=> fetch(`http://localhost:5000/product/${params.id}`)   
+         loader:({params})=> fetch(`https://brand-shop-server-gik7rup7e-ranas-projects-c2243bd3.vercel.app/product/${params.id}`)   
       },
       {
         path:'/myCart',
         element:<PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        loader: ()=> fetch('http://localhost:5000/myCart')
+        loader: ()=> fetch('https://brand-shop-server-gik7rup7e-ranas-projects-c2243bd3.vercel.app/myCart')
       },
       {
         path:'/login',
