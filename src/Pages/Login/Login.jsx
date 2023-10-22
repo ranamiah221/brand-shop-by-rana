@@ -1,13 +1,23 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import google from '../../assets/stock-vector-google.jpg'
 import Swal from "sweetalert2";
 
 
 const Login = () => {
-    const { login }= useContext(AuthContext);
+    const { login, signInWithGoogle }= useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    const handleGoogleSignIn=()=>{
+      signInWithGoogle()
+      .then(result=>{
+        console.log(result.user)
+      })
+      .catch(error=>{
+        console.error(error)
+      })
+    }
     const handleLogin= e =>{
         e.preventDefault();
         const email = e.target.email.value;
@@ -59,6 +69,9 @@ const Login = () => {
           <button className="btn btn-primary">Login</button>
           <p className="mt-3">New ?? Please <Link className="text-blue-800 font-bold" to={'/register'}>Register</Link></p>
         </div>
+            
+        <button onClick={handleGoogleSignIn} className=""><img className="w-1/5 rounded-full " src={google} alt="" /></button>
+            
       </form>
     </div>
   

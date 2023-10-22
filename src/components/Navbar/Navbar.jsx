@@ -7,11 +7,11 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
       const links= <nav className="text-base font font-medium ">
-                 <NavLink className= 'mr-5 hover:text-lg ' to={'/'}>Home</NavLink>
-                 <NavLink className= 'mr-5 hover:text-lg ' to={'/addProduct'}>Add Product</NavLink>
-                 <NavLink className= 'mr-5 hover:text-lg ' to={'/myCart'}>My Cart</NavLink>
-                 <NavLink className= 'mr-5 hover:text-lg ' to={'/register'}>Register</NavLink>
-                 <NavLink className= 'mr-5 hover:text-lg ' to={'/login'}>Login</NavLink>
+                 <NavLink className= 'mr-5 hover:btn bg-white   ' to='/'>Home</NavLink>
+                 <NavLink className= 'mr-5 hover:btn bg-white   ' to='/addProduct'>Add Product</NavLink>
+                 <NavLink className= 'mr-5 hover:btn bg-white   ' to='/myCart'>My Cart</NavLink>
+                 <NavLink className= 'mr-5 hover:btn bg-white   ' to='/register'>Register</NavLink>
+                 <NavLink className= 'mr-5 hover:btn bg-white   ' to='/login'>Login</NavLink>
 
       </nav>       
     const { user, logOut }= useContext(AuthContext);
@@ -50,11 +50,16 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    {
-      user ? <button onClick={handleLogOut}>Log Out</button> :
-      <Link to={'/login'}>Login </Link>
+    <span>
+      {
+        user && <p>{user.email}</p>
+      }
+    </span> 
+     {
+      user ? <button className="border p-2 m-3 rounded-lg font-medium bg-slate-400" onClick={handleLogOut}>Log Out</button> :
+      <Link  className="border p-2 m-3 rounded-lg font-medium bg-slate-300" to={'/login'}>Login </Link>
     }
-     
+   
   </div>
 </div>
           
